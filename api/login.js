@@ -1,9 +1,13 @@
 export default function handler(req, res) {
   const clientId = process.env.OAUTH_CLIENT_ID;
-  
-  // We ask GitHub for 'repo' (to commit files) and 'user' (to read their email/profile)
-  const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=repo,user`;
-  
-  // Redirect the user to GitHub
+  const redirectUri = 'http://localhost:3000/api/callback';
+
+  const params = new URLSearchParams({
+    client_id: clientId,
+    redirect_uri: redirectUri,
+    scope: 'repo user',
+  });
+
+  const githubAuthUrl = `https://github.com/login/oauth/authorize?${params.toString()}`;
   res.redirect(302, githubAuthUrl);
 }
