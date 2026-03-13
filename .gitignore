@@ -1,1 +1,16 @@
-.vercel
+# Dependencies
+node_modules/
+
+# Local Environment Secrets
+.env
+.env.local
+.env.*.local
+
+# Vercel Cache/Build Folders
+.vercel/
+.next/
+dist/
+
+# System Files
+.DS_Store
+Thumbs.db
