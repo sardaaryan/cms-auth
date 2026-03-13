@@ -2,7 +2,6 @@ export default async function handler(req, res) {
   const { code } = req.query;
   const clientId = process.env.OAUTH_CLIENT_ID;
   const clientSecret = process.env.OAUTH_CLIENT_SECRET;
-  const redirectUri = 'http://localhost:3000/api/callback';
 
   if (!code) {
     return res.status(400).send('Missing code');
@@ -19,7 +18,6 @@ export default async function handler(req, res) {
         client_id: clientId,
         client_secret: clientSecret,
         code,
-        redirect_uri: redirectUri,
       }),
     });
 
